@@ -11,6 +11,8 @@ import CompanySelectorAutocomplete from "./components/CompanySelectorAutocomplet
 import RecommendationTrendsBarChart from "./components/RecommendationTrendsBarChart";
 import useDeviceInfo from "./hooks/useDeviceInfo";
 import { Paper } from "@mui/material";
+import CompanyNews from "./components/CompanyNews";
+import ScrollSensitiveAvatar from "./components/ScrollSensitiveAvatar";
 
 function App() {
   const [selectedCompany, setSelectedCompany] = useState<StockCompany>(null);
@@ -48,6 +50,7 @@ function App() {
     <div className="main-container">
       <div className="header">
         <h1>Stock Data</h1>
+        <ScrollSensitiveAvatar />
       </div>
       {stockCompanies ? (
         <>
@@ -92,8 +95,9 @@ function App() {
             </Paper>
           )}
           {(deviceType === "tablet" || deviceType === "desktop") && (
-            <div className="charts-row">
+            <div className="charts-row-align-top">
               <RecommendationTrendsBarChart symbol={selectedCompany?.symbol} />
+              <CompanyNews symbol={selectedCompany?.symbol} />
             </div>
           )}
         </>

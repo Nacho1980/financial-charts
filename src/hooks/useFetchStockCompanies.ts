@@ -15,7 +15,6 @@ export const useFetchStockCompanies = () => {
           `https://finnhub.io/api/v1/stock/symbol?exchange=US&mic=XNYS&token=${API_KEY}`
         );
         const data: StockCompany[] = await response.json();
-        console.log("Number of companies retrieved: ", data.length);
         const sortedData = data.sort((a, b) =>
           a.symbol.localeCompare(b.symbol)
         );

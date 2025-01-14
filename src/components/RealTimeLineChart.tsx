@@ -34,10 +34,10 @@ const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
 }) => {
   const [timestamps, setTimestamps] = useState<string[]>([]); // X-axis labels
   const [prices, setPrices] = useState<number[]>([]); // Y-axis data
-  const websocketRef = useRef<WebSocket | null>(null); // WebSocket reference
+  /*const websocketRef = useRef<WebSocket | null>(null); // WebSocket reference
 
   // API error on websocket connection
-  /*   useEffect(() => {
+     useEffect(() => {
     // Open WebSocket connection
     const socket = new WebSocket(`wss://ws.finnhub.io?token=${API_KEY}`);
     websocketRef.current = socket;
@@ -73,9 +73,6 @@ const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
   useEffect(() => {
     setPrices([]);
     setTimestamps([]);
-    console.log(
-      `Real time linechart. New symbol ${symbol} and opening ${opening}`
-    );
   }, [symbol]);
 
   useEffect(() => {
