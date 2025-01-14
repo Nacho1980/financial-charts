@@ -37,8 +37,16 @@ const ColumnChart: React.FC<ColumnChartProps> = ({
       {
         label: title,
         data: inputData, // Data points for the columns
-        backgroundColor: "rgba(75, 192, 192, 0.5)", // Column color
-        borderColor: "rgba(75, 192, 192, 1)", // Border color
+        backgroundColor: [
+          "rgba(75, 192, 192, 0.5)",
+          "rgba(54, 162, 235, 0.6)",
+          "rgba(255, 99, 132, 0.6)",
+        ], // Column color
+        borderColor: [
+          "rgba(75, 192, 192, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 99, 132, 1)",
+        ], // Border color
         borderWidth: 1, // Border width
       },
     ],
@@ -52,7 +60,7 @@ const ColumnChart: React.FC<ColumnChartProps> = ({
         position: "top", // Position of the legend
       },
       title: {
-        display: true,
+        display: false,
         text: "Intraday stock value", // Title of the chart
       },
     },
