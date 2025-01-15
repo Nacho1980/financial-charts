@@ -5,6 +5,9 @@ interface CompanyNewsProps {
   symbol: string;
 }
 
+/**
+ * Component that displays the latest news for a given company.
+ **/
 const CompanyNews: React.FC<CompanyNewsProps> = ({ symbol }) => {
   const from = getOneYearAgoYYYYMMDD(); // Start date (YYYY-MM-DD)
   const to = getTodayYYYYMMDD(); // End date (YYYY-MM-DD)

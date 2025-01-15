@@ -1,7 +1,9 @@
+// Returns a random integer between min (inclusive) and max (inclusive)
 export const getRandomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+// Add or subtract a random value to the input value, ensuring it's over 0
 export const addOrSubstractRandom = (value: number) => {
   const tmp =
     Math.random() > 0.5

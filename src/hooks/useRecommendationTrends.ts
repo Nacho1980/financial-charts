@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { API_KEY } from "../utils/Constants";
 
+/**
+ * Custom hook that fetches recommendation trends for a stock symbol.
+ * @param symbol The stock symbol.
+ * @returns An object with the recommendation trends, loading state, and error message.
+ */
 export const useRecommendationTrends = (symbol: string) => {
   const [trends, setTrends] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);

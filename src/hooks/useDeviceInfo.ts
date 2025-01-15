@@ -5,6 +5,9 @@ type DeviceInfo = {
   orientation: "portrait" | "landscape";
 };
 
+/**
+ * Hook that returns information about the device type and orientation.
+ */
 const useDeviceInfo = (): DeviceInfo => {
   const getDeviceInfo = (): DeviceInfo => {
     const width = window.innerWidth;

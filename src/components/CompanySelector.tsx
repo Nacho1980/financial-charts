@@ -9,6 +9,9 @@ interface CompanySelectorProps {
   handleSelectChange: (event: SelectChangeEvent<StockCompany>) => void;
 }
 
+/**
+ * Component that displays a select input to choose a stock company.
+ **/
 const CompanySelector: React.FC<CompanySelectorProps> = ({
   label,
   stockCompanies,

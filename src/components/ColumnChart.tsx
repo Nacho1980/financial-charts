@@ -25,6 +25,9 @@ interface ColumnChartProps {
   inputData: number[];
 }
 
+/**
+ * Component that displays a column chart using Chart.js.
+ **/
 const ColumnChart: React.FC<ColumnChartProps> = ({
   title,
   labels,
@@ -78,9 +81,17 @@ const ColumnChart: React.FC<ColumnChartProps> = ({
   };
 
   if (inputData?.length > 0) {
-    return <Bar data={chartData} options={options} />;
+    return (
+      <div className="column-chart">
+        <Bar data={chartData} options={options} />
+      </div>
+    );
   } else {
-    return <p>Select a company to show data</p>;
+    return (
+      <div className="column-chart">
+        <p>Select a company to show data</p>
+      </div>
+    );
   }
 };
 

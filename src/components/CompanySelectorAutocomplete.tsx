@@ -4,10 +4,13 @@ import { Autocomplete, TextField } from "@mui/material";
 interface CompanySelectorAutocompleteProps {
   stockCompanies: StockCompany[] | null;
   label: string;
-  selectedCompany: StockCompany;
+  selectedCompany: StockCompany | null;
   handleSelectChange: (stockCo: StockCompany | null) => void;
 }
 
+/**
+ * Component that displays an Autocomplete input to choose a stock company.
+ **/
 const CompanySelectorAutocomplete: React.FC<
   CompanySelectorAutocompleteProps
 > = ({ label, stockCompanies, selectedCompany, handleSelectChange }) => {
@@ -27,7 +30,7 @@ const CompanySelectorAutocomplete: React.FC<
           value={selectedCompany} // Bind the selected value to the state
           onChange={(event, newValue) => handleSelectChange(newValue)} // Update state when a selection is made
           renderInput={(params) => (
-            <TextField {...params} label="Select stock" variant="outlined" />
+            <TextField {...params} label={label} variant="outlined" />
           )}
         />
       </div>

@@ -6,6 +6,10 @@ interface RecommendationTrendChartProps {
   symbol: string; // Company symbol (e.g., AAPL for Apple)
 }
 
+/**
+ * Component that displays a bar chart of recommendation trends (like buy, hold, sell...)
+ * for a given company.
+ **/
 const RecommendationTrendsBarChart: React.FC<RecommendationTrendChartProps> = ({
   symbol,
 }) => {
@@ -74,6 +78,9 @@ const RecommendationTrendsBarChart: React.FC<RecommendationTrendChartProps> = ({
           options={chartOptions}
           plugins={[chartBackgroundPlugin]}
         />
+      )}
+      {!loading && !error && trends.length === 0 && (
+        <p>No recommendation trends available for {symbol}</p>
       )}
     </div>
   );

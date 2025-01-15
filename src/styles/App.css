@@ -5,7 +5,6 @@
   height: 100%;
   min-height: 100%;
   overflow-x: hidden;
-  /* overflow-y: hidden; */
 }
 
 .main-container {
@@ -74,11 +73,15 @@
 .recommendation-trends-chart {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
 
   h2 {
     margin-top: 0;
     margin-bottom: 16px;
+    text-align: center;
+  }
+  p {
+    margin: 0;
     text-align: center;
   }
 }
@@ -89,9 +92,9 @@
   height: 280px;
 
   h2 {
-    background-color: #f0f2f5; /* Optional: background to cover content below when scrolling */
-    margin: 0; /* Remove margin to avoid shifting */
-    padding: 0 10px 10px 10px; /* Add some padding for better appearance */
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0 10px 10px 10px;
     text-align: center;
   }
 
@@ -105,6 +108,16 @@
 
     .small-font {
       font-size: 0.7rem;
+    }
+
+    li {
+      position: relative;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li:last-child {
+      border-bottom: none;
     }
   }
 }
@@ -132,10 +145,12 @@
 /* Tablet and desktop */
 @media (min-width: 480px) {
   .column-chart,
-  .real-time-line-chart,
+  .real-time-line-chart {
+    width: 50%;
+    justify-content: center;
+  }
   .recommendation-trends-chart,
   .company-news {
     width: 50%;
-    justify-content: center;
   }
 }

@@ -4,6 +4,13 @@ import { API_KEY } from "../utils/Constants";
 
 const FINNHUB_API_URL = "https://finnhub.io/api/v1";
 
+/**
+ * Custom hook that fetches news about a company.
+ * @param symbol The company symbol.
+ * @param from The start date of the news.
+ * @param to The end date of the news.
+ * @returns An object with the news, loading state, and error message.
+ */
 export const useCompanyNews = (
   symbol: string,
   from: string,

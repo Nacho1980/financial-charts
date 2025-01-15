@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./styles/App.css";
 import { SelectChangeEvent } from "@mui/material/Select";
 //import CompanySelector from "./components/CompanySelector";
@@ -13,14 +14,19 @@ import useDeviceInfo from "./hooks/useDeviceInfo";
 import { Paper } from "@mui/material";
 import CompanyNews from "./components/CompanyNews";
 import ScrollSensitiveAvatar from "./components/ScrollSensitiveAvatar";
+import { selectCompany } from "./reducers/companiesSlice";
+import { RootState } from "./store/store";
 
 function App() {
-  const [selectedCompany, setSelectedCompany] = useState<StockCompany>(null);
+  const selectedCompany = useSelector(
+    (state: RootState) => state.companies.selectedCompany
+  );
 
-  const { stockCompanies, initialSelectedCompany, companiesError } =
-    useFetchStockCompanies();
+  const { stockCompanies, companiesError } = useFetchStockCompanies();
   const { quote, loading, quoteError } = useStockQuote(selectedCompany);
-  const { deviceType, orientation } = useDeviceInfo();
+  const { deviceType } = useDeviceInfo();
+
+  const dispatch = useDispatch();
 
   if (companiesError || quoteError) {
     const err = companiesError ? companiesError : quoteError;
@@ -30,19 +36,14 @@ function App() {
   useEffect(() => {
     document.title = "Stock Data React demo by Ignacio";
   }, []);
-  useEffect(() => {
-    if (initialSelectedCompany) {
-      setSelectedCompany(initialSelectedCompany);
-    }
-  }, [initialSelectedCompany]);
 
-  const handleChange = (event: SelectChangeEvent<StockCompany>) => {
-    setSelectedCompany(event.target.value as StockCompany);
-  };
+  /*   const handleChange = (event: SelectChangeEvent<StockCompany>) => {
+    dispatch(selectCompany(event.target.value as StockCompany));
+  }; */
 
   const handleAutocompleteChange = (newValue: StockCompany | null) => {
     if (newValue) {
-      setSelectedCompany(newValue);
+      dispatch(selectCompany(newValue));
     }
   };
 
@@ -69,37 +70,36 @@ function App() {
           {quote && (
             <Paper elevation={3}>
               <div className="charts-row">
-                <div className="column-chart">
-                  <ColumnChart
-                    title={
-                      selectedCompany.symbol +
-                      " - " +
-                      selectedCompany.description
-                    }
-                    labels={["Opening", "High", "Low"]}
-                    inputData={[quote.open, quote.high, quote.low]}
+                <ColumnChart
+                  title={
+                    selectedCompany?.symbol +
+                    " - " +
+                    selectedCompany?.description
+                  }
+                  labels={["Opening", "High", "Low"]}
+                  inputData={[quote.open, quote.high, quote.low]}
+                />
+                {selectedCompany?.symbol === quote.symbol ? (
+                  <RealTimeLineChart
+                    name={selectedCompany?.description}
+                    symbol={selectedCompany?.symbol}
+                    opening={quote.open}
                   />
-                </div>
-                {selectedCompany.symbol === quote.symbol ? (
-                  <div className="real-time-line-chart">
-                    <RealTimeLineChart
-                      name={selectedCompany?.description}
-                      symbol={selectedCompany?.symbol}
-                      opening={quote.open}
-                    />
-                  </div>
                 ) : (
                   <div>Loading real time line chart...</div>
                 )}
               </div>
             </Paper>
           )}
-          {(deviceType === "tablet" || deviceType === "desktop") && (
-            <div className="charts-row-align-top">
-              <RecommendationTrendsBarChart symbol={selectedCompany?.symbol} />
-              <CompanyNews symbol={selectedCompany?.symbol} />
-            </div>
-          )}
+          {(deviceType === "tablet" || deviceType === "desktop") &&
+            selectedCompany && (
+              <div className="charts-row-align-top">
+                <RecommendationTrendsBarChart
+                  symbol={selectedCompany?.symbol}
+                />
+                <CompanyNews symbol={selectedCompany?.symbol} />
+              </div>
+            )}
         </>
       ) : (
         <p>Loading...</p>

@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { StockCompany } from "../types/Types";
 import { API_KEY } from "../utils/Constants";
+import { selectCompany, setCompanies } from "../reducers/companiesSlice";
 
+/**
+ * Custom hook that fetches stock companies from the Finnhub API.
+ * @returns An object with the stock companies and an error message.
+ */
 export const useFetchStockCompanies = () => {
+  const dispatch = useDispatch();
   const [stockCompanies, setStockCompanies] = useState<StockCompany[]>([]);
-  const [initialSelectedCompany, setInitialSelectedCompany] =
-    useState<StockCompany | null>(null);
   const [companiesError, setCompaniesError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -19,7 +24,8 @@ export const useFetchStockCompanies = () => {
           a.symbol.localeCompare(b.symbol)
         );
         setStockCompanies(sortedData);
-        setInitialSelectedCompany(sortedData[0] || null);
+        dispatch(setCompanies(data));
+        dispatch(selectCompany(sortedData[0] || null));
       } catch (error) {
         console.error("Error fetching stock companies:", error);
         setCompaniesError("Failed to fetch stock companies");
@@ -44,5 +50,5 @@ export const useFetchStockCompanies = () => {
     }
   }; */
 
-  return { stockCompanies, initialSelectedCompany, companiesError };
+  return { stockCompanies, companiesError };
 };

@@ -2,6 +2,10 @@ import { Avatar } from "@mui/material";
 import { MY_LINKEDIN_PROFILE } from "../utils/Constants";
 import { useEffect, useState } from "react";
 
+/**
+ * Component that displays an Avatar that is only visible when the user
+ * has scrolled to the top of the page.
+ **/
 const ScrollSensitiveAvatar: React.FC = () => {
   const [showAvatar, setShowAvatar] = useState(true);
 
@@ -9,7 +13,6 @@ const ScrollSensitiveAvatar: React.FC = () => {
     const scrollDiv = document.getElementById("root");
     const handleScroll = () => {
       // Update state based on scroll position
-      console.log("scrollY:", scrollDiv?.scrollTop);
       if (scrollDiv?.scrollTop === 0) {
         setShowAvatar(true);
       } else {

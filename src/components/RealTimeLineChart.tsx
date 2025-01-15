@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -9,7 +9,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { API_KEY } from "../utils/Constants";
 
 // Register Chart.js components
 ChartJS.register(
@@ -27,6 +26,10 @@ interface RealTimeChartProps {
   opening: number; // Opening price of the stock
 }
 
+/**
+ * Component that displays a real-time line chart using Chart.js.
+ * Note: This component generates random data for demonstration purposes.
+ **/
 const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
   name,
   symbol,
@@ -142,7 +145,7 @@ const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
   };
 
   return (
-    <div>
+    <div className="real-time-line-chart">
       <Line data={data} options={options} />
     </div>
   );

@@ -8,7 +8,12 @@ interface UseStockQuoteResult {
   quoteError: string | null;
 }
 
-const useStockQuote = (co: StockCompany): UseStockQuoteResult => {
+/**
+ * Custom hook that fetches the stock quote for a company symbol.
+ * @param co The stock company.
+ * @returns An object with the stock quote, loading state, and error message.
+ */
+const useStockQuote = (co: StockCompany | null): UseStockQuoteResult => {
   const [quote, setQuote] = useState<StockQuote | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [quoteError, setQuoteError] = useState<string | null>(null);
