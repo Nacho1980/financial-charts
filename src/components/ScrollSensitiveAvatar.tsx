@@ -19,8 +19,6 @@ const ScrollSensitiveAvatar: React.FC = () => {
         setShowAvatar(false);
       }
     };
-
-    console.log("ADDING SCROLL EVENT LISTENER");
     scrollDiv?.addEventListener("scroll", handleScroll);
 
     // Cleanup event listener on component unmount
@@ -28,7 +26,6 @@ const ScrollSensitiveAvatar: React.FC = () => {
       scrollDiv?.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  console.log("showAvatar:", showAvatar);
 
   if (showAvatar) {
     return (
