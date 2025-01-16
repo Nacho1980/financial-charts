@@ -79,7 +79,7 @@ const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
   }, [symbol]);
 
   useEffect(() => {
-    let intervalId: number;
+    let intervalId: NodeJS.Timeout;
 
     const generateRandomPrice = () => {
       setTimestamps((prevTimestamps) => {
@@ -97,13 +97,13 @@ const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
     };
 
     // Start generating random data at intervals
-    intervalId = window.setInterval(generateRandomPrice, 1000); // Update every second
+    intervalId = setInterval(generateRandomPrice, 1000); // Update every second
 
     return () => {
       // Cleanup interval on unmount
       clearInterval(intervalId);
     };
-  }, []);
+  }, [opening]);
 
   // Chart data and options
   const data = {
