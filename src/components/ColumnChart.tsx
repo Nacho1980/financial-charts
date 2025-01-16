@@ -80,19 +80,15 @@ const ColumnChart: React.FC<ColumnChartProps> = ({
     },
   };
 
-  if (inputData?.length > 0) {
-    return (
-      <div className="column-chart">
+  return (
+    <div className="column-chart">
+      {inputData?.length > 0 ? (
         <Bar data={chartData} options={options} />
-      </div>
-    );
-  } else {
-    return (
-      <div className="column-chart">
-        <p>Select a company to show data</p>
-      </div>
-    );
-  }
+      ) : (
+        <p>No data to display</p>
+      )}
+    </div>
+  );
 };
 
 export default ColumnChart;
