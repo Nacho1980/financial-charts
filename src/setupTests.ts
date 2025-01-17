@@ -50,9 +50,8 @@ vi.mock("chart.js", async () => {
     ...actual,
     Chart: class {
       static register() {}
-      constructor(ctx: any, config: any) {
-        this.config = config;
-        this.ctx = ctx;
+      constructor(_ctx: any, _config: any) {
+        // Prefix parameters with underscore to indicate they're intentionally unused
       }
       update() {}
       destroy() {}

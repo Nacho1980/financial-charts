@@ -58,7 +58,7 @@ const RecommendationTrendsBarChart: React.FC<RecommendationTrendChartProps> = ({
   // Plugin to set chart background color
   const chartBackgroundPlugin = {
     id: "chartBackground",
-    beforeDraw: (chart) => {
+    beforeDraw: (chart: any) => {
       const ctx = chart.ctx;
       ctx.save();
       ctx.fillStyle = "#f0f2f5"; // Set the background color to #f0f2f5

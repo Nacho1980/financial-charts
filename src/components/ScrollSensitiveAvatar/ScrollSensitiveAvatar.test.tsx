@@ -10,8 +10,21 @@ vi.mock("../utils/Constants", () => ({
 
 // Mock Material-UI Avatar component
 vi.mock("@mui/material", () => ({
-  Avatar: ({ children, sx, ...props }) => (
-    <div data-testid="mock-avatar" className={props.className}>
+  Avatar: ({
+    children,
+    sx,
+    className,
+    ...props
+  }: {
+    children?: React.ReactNode;
+    sx?: any;
+    className?: string;
+  }) => (
+    <div
+      data-testid="mock-avatar"
+      className={className}
+      {...(props as React.HTMLAttributes<HTMLDivElement>)}
+    >
       {children}
     </div>
   ),

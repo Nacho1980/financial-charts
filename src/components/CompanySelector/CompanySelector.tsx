@@ -35,7 +35,7 @@ const CompanySelector: React.FC<CompanySelectorProps> = ({
         }
       >
         {stockCompanies?.map((co) => (
-          <MenuItem key={co.symbol} value={co}>
+          <MenuItem key={co.symbol} value={co.symbol}>
             {co.description ? co.symbol + " - " + co.description : co.symbol}
           </MenuItem>
         ))}

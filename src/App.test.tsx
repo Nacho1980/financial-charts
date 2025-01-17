@@ -1,9 +1,9 @@
+import { vi, Mock } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import companiesReducer from "./reducers/companiesSlice";
 import App from "./App";
-import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import * as useFetchStockCompaniesModule from "./hooks/useFetchStockCompanies";
 
@@ -121,7 +121,7 @@ describe("App Integration", () => {
 
     // Mock the implementation of useFetchStockCompanies
     (
-      useFetchStockCompaniesModule.useFetchStockCompanies as vi.Mock
+      useFetchStockCompaniesModule.useFetchStockCompanies as Mock
     ).mockReturnValue({
       stockCompanies: mockStockCompanies,
       companiesError: mockCompaniesError,
@@ -171,7 +171,7 @@ describe("App Integration", () => {
   test("handles error states", async () => {
     // Ensure the mock implementation returns a valid value with error
     (
-      useFetchStockCompaniesModule.useFetchStockCompanies as vi.Mock
+      useFetchStockCompaniesModule.useFetchStockCompanies as Mock
     ).mockImplementationOnce(() => ({
       stockCompanies: null,
       companiesError: "Failed to fetch companies",
@@ -187,7 +187,7 @@ describe("App Integration", () => {
   test("shows loading state when companies are not yet loaded", async () => {
     // Ensure the mock implementation returns a valid value with loading state
     (
-      useFetchStockCompaniesModule.useFetchStockCompanies as vi.Mock
+      useFetchStockCompaniesModule.useFetchStockCompanies as Mock
     ).mockImplementationOnce(() => ({
       stockCompanies: undefined, // Explicitly returning undefined for loading state
       companiesError: null,

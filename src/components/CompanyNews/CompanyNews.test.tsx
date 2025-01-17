@@ -19,7 +19,7 @@ type UseCompanyNewsReturn = {
 };
 
 // Create the mock outside of the vi.mock call
-const useCompanyNewsMock = vi.fn<[], UseCompanyNewsReturn>();
+const useCompanyNewsMock = vi.fn<() => UseCompanyNewsReturn>();
 
 // Mock the module
 vi.mock("../../hooks/useCompanyNews", () => ({

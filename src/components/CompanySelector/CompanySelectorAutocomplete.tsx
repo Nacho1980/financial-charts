@@ -28,7 +28,7 @@ const CompanySelectorAutocomplete: React.FC<
             option.symbol === value.symbol
           } // Compare objects correctly
           value={selectedCompany} // Bind the selected value to the state
-          onChange={(event, newValue) => handleSelectChange(newValue)} // Update state when a selection is made
+          onChange={(_event, newValue) => handleSelectChange(newValue)} // Update state when a selection is made
           renderInput={(params) => (
             <TextField {...params} label={label} variant="outlined" />
           )}

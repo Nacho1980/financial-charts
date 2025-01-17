@@ -68,13 +68,13 @@ const ColumnChart: React.FC<ColumnChartProps> = ({
       },
     },
     scales: {
-      x: {
-        beginAtZero: true, // Start X-axis at zero
-      },
+      x: { beginAtZero: true, type: "category" as const },
       y: {
-        beginAtZero: true, // Start Y-axis at zero
+        beginAtZero: true,
         ticks: {
-          callback: (value: number) => `$${value}`, // Format Y-axis ticks with a dollar sign
+          callback: function (tickValue: string | number) {
+            return `$${tickValue}`;
+          },
         },
       },
     },

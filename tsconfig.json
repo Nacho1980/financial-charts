@@ -5,9 +5,10 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "./src/types"],
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
+  "types": ["jest", "vitest"],
   "exclude": [
     "node_modules",
     "dist",

@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import ColumnChart from "./ColumnChart";
 import "@testing-library/jest-dom"; // For additional matchers
