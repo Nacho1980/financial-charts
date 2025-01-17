@@ -22,7 +22,7 @@ type UseCompanyNewsReturn = {
 const useCompanyNewsMock = vi.fn<[], UseCompanyNewsReturn>();
 
 // Mock the module
-vi.mock("../hooks/useCompanyNews", () => ({
+vi.mock("../../hooks/useCompanyNews", () => ({
   useCompanyNews: () => useCompanyNewsMock(),
 }));
 

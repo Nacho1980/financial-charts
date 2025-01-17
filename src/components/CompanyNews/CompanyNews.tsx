@@ -1,5 +1,5 @@
-import { useCompanyNews } from "../hooks/useCompanyNews";
-import { getOneYearAgoYYYYMMDD, getTodayYYYYMMDD } from "../utils/Utils";
+import { useCompanyNews } from "../../hooks/useCompanyNews";
+import { getOneYearAgoYYYYMMDD, getTodayYYYYMMDD } from "../../utils/Utils";
 
 interface CompanyNewsProps {
   symbol: string;

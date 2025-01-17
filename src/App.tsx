@@ -4,16 +4,16 @@ import "./styles/App.css";
 import { SelectChangeEvent } from "@mui/material/Select";
 //import CompanySelector from "./components/CompanySelector";
 import { useFetchStockCompanies } from "./hooks/useFetchStockCompanies";
-import RealTimeLineChart from "./components/RealTimeLineChart";
-import ColumnChart from "./components/ColumnChart";
+import RealTimeLineChart from "./components/RealTimeLineChart/RealTimeLineChart";
+import ColumnChart from "./components/ColumnChart/ColumnChart";
 import useStockQuote from "./hooks/useStockQuote";
 import { StockCompany } from "./types/Types";
-import CompanySelectorAutocomplete from "./components/CompanySelectorAutocomplete";
-import RecommendationTrendsBarChart from "./components/RecommendationTrendsBarChart";
+import CompanySelectorAutocomplete from "./components/CompanySelector/CompanySelectorAutocomplete";
+import RecommendationTrendsBarChart from "./components/RecommendationTrendsBarChart/RecommendationTrendsBarChart";
 import useDeviceInfo from "./hooks/useDeviceInfo";
 import { Paper } from "@mui/material";
-import CompanyNews from "./components/CompanyNews";
-import ScrollSensitiveAvatar from "./components/ScrollSensitiveAvatar";
+import CompanyNews from "./components/CompanyNews/CompanyNews";
+import ScrollSensitiveAvatar from "./components/ScrollSensitiveAvatar/ScrollSensitiveAvatar";
 import { selectCompany } from "./reducers/companiesSlice";
 import { RootState } from "./store/store";
 
@@ -28,15 +28,6 @@ function App() {
 
   const dispatch = useDispatch();
 
-  if (companiesError || quoteError) {
-    const err = companiesError ? companiesError : quoteError;
-    return <div>Error: {err}</div>;
-  }
-
-  useEffect(() => {
-    document.title = "Stock Data React demo by Ignacio";
-  }, []);
-
   /*   const handleChange = (event: SelectChangeEvent<StockCompany>) => {
     dispatch(selectCompany(event.target.value as StockCompany));
   }; */
@@ -46,6 +37,11 @@ function App() {
       dispatch(selectCompany(newValue));
     }
   };
+
+  if (companiesError || quoteError) {
+    const err = companiesError ? companiesError : quoteError;
+    return <div>Error: {err}</div>;
+  }
 
   return (
     <div className="main-container">

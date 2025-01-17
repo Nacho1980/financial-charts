@@ -35,7 +35,7 @@ vi.mock("./hooks/useDeviceInfo", () => ({
 }));
 
 // Mock child components
-vi.mock("./components/RealTimeLineChart", () => ({
+vi.mock("./components/RealTimeLineChart/RealTimeLineChart", () => ({
   default: ({ symbol, name }: any) => (
     <div data-testid="real-time-chart">
       Real Time Chart for {symbol} - {name}
@@ -43,7 +43,7 @@ vi.mock("./components/RealTimeLineChart", () => ({
   ),
 }));
 
-vi.mock("./components/ColumnChart", () => ({
+vi.mock("./components/ColumnChart/ColumnChart", () => ({
   default: ({ title, inputData }: any) => (
     <div data-testid="column-chart">
       Column Chart: {title}
@@ -52,21 +52,24 @@ vi.mock("./components/ColumnChart", () => ({
   ),
 }));
 
-vi.mock("./components/RecommendationTrendsBarChart", () => ({
-  default: ({ symbol }: any) => (
-    <div data-testid="recommendation-chart">
-      Recommendation Trends for {symbol}
-    </div>
-  ),
-}));
+vi.mock(
+  "./components/RecommendationTrendsBarChart/RecommendationTrendsBarChart",
+  () => ({
+    default: ({ symbol }: any) => (
+      <div data-testid="recommendation-chart">
+        Recommendation Trends for {symbol}
+      </div>
+    ),
+  })
+);
 
-vi.mock("./components/CompanyNews", () => ({
+vi.mock("./components/CompanyNews/CompanyNews", () => ({
   default: ({ symbol }: any) => (
     <div data-testid="company-news">News for {symbol}</div>
   ),
 }));
 
-vi.mock("./components/ScrollSensitiveAvatar", () => ({
+vi.mock("./components/ScrollSensitiveAvatar/ScrollSensitiveAvatar", () => ({
   default: () => <div data-testid="avatar">Avatar</div>,
 }));
 

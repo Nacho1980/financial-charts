@@ -1,5 +1,5 @@
 import { Avatar } from "@mui/material";
-import { MY_LINKEDIN_PROFILE } from "../utils/Constants";
+import { MY_LINKEDIN_PROFILE } from "../../utils/Constants";
 import { useEffect, useState } from "react";
 
 /**

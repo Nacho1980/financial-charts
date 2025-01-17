@@ -1,5 +1,5 @@
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { StockCompany } from "../types/Types";
+import { StockCompany } from "../../types/Types";
 import { MenuItem } from "@mui/material";
 
 interface CompanySelectorProps {

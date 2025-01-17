@@ -4,7 +4,8 @@ import { vi } from "vitest";
 
 // Mock the constants
 vi.mock("../utils/Constants", () => ({
-  MY_LINKEDIN_PROFILE: "https://linkedin.com/in/test-profile",
+  MY_LINKEDIN_PROFILE:
+    "https://www.linkedin.com/in/ignacio-santos-alonso-90b1b633/",
 }));
 
 // Mock Material-UI Avatar component
@@ -47,7 +48,7 @@ describe("ScrollSensitiveAvatar", () => {
     const link = screen.getByRole("link");
     expect(link).toHaveAttribute(
       "href",
-      "https://linkedin.com/in/test-profile"
+      "https://www.linkedin.com/in/ignacio-santos-alonso-90b1b633/"
     );
     expect(link).toHaveTextContent("IS");
   });

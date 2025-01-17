@@ -1,4 +1,4 @@
-import { StockCompany } from "../types/Types";
+import { StockCompany } from "../../types/Types";
 import { Autocomplete, TextField } from "@mui/material";
 
 interface CompanySelectorAutocompleteProps {

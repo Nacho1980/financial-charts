@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CompanySelectorAutocomplete from "./CompanySelectorAutocomplete";
-import { StockCompany } from "../types/Types";
+import { StockCompany } from "../../types/Types";
 import { vi } from "vitest";
 
 describe("CompanySelectorAutocomplete", () => {

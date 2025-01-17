@@ -6,7 +6,7 @@ const mockSymbol = "AAPL";
 
 const mockUseRecommendationTrends = vi.fn();
 
-vi.mock("../hooks/useRecommendationTrends", () => ({
+vi.mock("../../hooks/useRecommendationTrends", () => ({
   useRecommendationTrends: () => mockUseRecommendationTrends(),
 }));
 

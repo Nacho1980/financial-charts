@@ -1,6 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import { useRecommendationTrends } from "../hooks/useRecommendationTrends";
+import { useRecommendationTrends } from "../../hooks/useRecommendationTrends";
 
 interface RecommendationTrendChartProps {
   symbol: string; // Company symbol (e.g., AAPL for Apple)
