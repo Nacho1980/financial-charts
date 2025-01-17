@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import companiesReducer from "./reducers/companiesSlice";
@@ -6,7 +6,6 @@ import App from "./App";
 import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import * as useFetchStockCompaniesModule from "./hooks/useFetchStockCompanies";
-import { StockCompany } from "./types/Types";
 
 // Mock all hooks directly using vi.fn()
 vi.mock("./hooks/useFetchStockCompanies", () => ({
@@ -76,7 +75,7 @@ vi.mock("./components/ScrollSensitiveAvatar/ScrollSensitiveAvatar", () => ({
 // Mock MUI components
 vi.mock("@mui/material", () => ({
   Paper: ({ children }: any) => <div data-testid="mui-paper">{children}</div>,
-  Autocomplete: ({ onChange, options, renderInput }: any) => (
+  Autocomplete: ({ onChange, options }: any) => (
     <div data-testid="mui-autocomplete">
       <select
         onChange={(e) => {
@@ -110,17 +109,6 @@ describe("App Integration", () => {
         <App />
       </Provider>
     );
-  };
-
-  // Sample StockCompany object with the correct type
-  const sampleCompany: StockCompany = {
-    currency: "USD",
-    description: "Apple Inc.",
-    displaySymbol: "AAPL",
-    figi: "BBG000B9XRY4",
-    mic: "XNAS",
-    symbol: "AAPL",
-    type: "Equity",
   };
 
   test("renders initial state and allows company selection", async () => {

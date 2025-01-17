@@ -60,7 +60,7 @@ const ColumnChart: React.FC<ColumnChartProps> = ({
     responsive: true,
     plugins: {
       legend: {
-        position: "top", // Position of the legend
+        position: "top" as const, // Position of the legend
       },
       title: {
         display: false,
@@ -74,7 +74,7 @@ const ColumnChart: React.FC<ColumnChartProps> = ({
       y: {
         beginAtZero: true, // Start Y-axis at zero
         ticks: {
-          callback: (value) => `$${value}`, // Format Y-axis ticks with a dollar sign
+          callback: (value: number) => `$${value}`, // Format Y-axis ticks with a dollar sign
         },
       },
     },

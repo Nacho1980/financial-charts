@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles/App.css";
-import { SelectChangeEvent } from "@mui/material/Select";
 //import CompanySelector from "./components/CompanySelector";
 import { useFetchStockCompanies } from "./hooks/useFetchStockCompanies";
 import RealTimeLineChart from "./components/RealTimeLineChart/RealTimeLineChart";
@@ -23,7 +21,7 @@ function App() {
   );
 
   const { stockCompanies, companiesError } = useFetchStockCompanies();
-  const { quote, loading, quoteError } = useStockQuote(selectedCompany);
+  const { quote, quoteError } = useStockQuote(selectedCompany);
   const { deviceType } = useDeviceInfo();
 
   const dispatch = useDispatch();

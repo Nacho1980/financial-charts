@@ -1,0 +1,5 @@
+{
+  "build": {
+    "ignoreCommand": "npm run test"
+  }
+}
