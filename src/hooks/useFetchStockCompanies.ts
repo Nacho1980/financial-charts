@@ -38,12 +38,10 @@ export const useFetchStockCompanies = () => {
   /*useEffect(() => {
      const fetchCompanyStockData = async () => {
     try {
-      // console.log(`Fetching stock data for selected company: ${selectedCompany}`);
-      // const response = await fetch(
-      //   `https://finnhub.io/api/v1/quote?symbol=$selectedCompany&token=${API_KEY}`
-      // );
-      // const data:CompanyQuote = await response.json();
-      // console.log(`Retrieved stock data for selected company ($selectedCompany):`, data);
+      const response = await fetch(
+         `https://finnhub.io/api/v1/quote?symbol=$selectedCompany&token=${API_KEY}`
+      );
+      const data:CompanyQuote = await response.json();
       setCompanyStockData(data);
     } catch (error) {
       console.error(`Error fetching stock data for selected company ($selectedCompany): error`);

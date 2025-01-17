@@ -28,7 +28,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-console.log("Chart.js components registered");
 // Mock HTMLCanvasElement getContext method
 global.HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue({
   // You can mock any required methods on the context if needed, like:

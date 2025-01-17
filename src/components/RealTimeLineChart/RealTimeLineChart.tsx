@@ -46,7 +46,6 @@ const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
     websocketRef.current = socket;
 
     socket.onopen = () => {
-      console.log("WebSocket connected");
       // Subscribe to the stock symbol
       socket.send(JSON.stringify({ type: "subscribe", symbol }));
     };
@@ -69,7 +68,6 @@ const RealTimeLineChart: React.FC<RealTimeChartProps> = ({
       // Cleanup WebSocket
       if (websocketRef.current) {
         websocketRef.current.close();
-        console.log("WebSocket disconnected");
       }
     };
   }, [symbol, API_KEY]); */

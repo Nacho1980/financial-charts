@@ -44,8 +44,6 @@ const useStockQuote = (co: StockCompany | null): UseStockQuoteResult => {
           previousClose: data.pc, // Previous close price
           symbol: co.symbol, // Symbol for the stock
         });
-        console.log("Retrieved quote for symbol: ", co.symbol);
-        console.log("Quote data: ", data);
       } catch (err: any) {
         setQuoteError(err.message);
       } finally {
